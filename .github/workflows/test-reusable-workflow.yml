@@ -1,0 +1,53 @@
+name: Test reusable workflow
+on:
+  pull_request: {}
+  workflow_dispatch: {}
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup-test.yml
+    strategy:
+      matrix:
+        target: ["one", "two"]
+    with:
+      matrix-step-name: setup
+      matrix-key: ${{ matrix.target }}
+      in: ${{ matrix.target }}
+
+  test:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    needs: [setup]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - uses: ./
+        id: current
+        with:
+          matrix-step-name: setup
+
+    outputs:
+      result: "${{ steps.current.outputs.result }}"
+
+  assert:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - uses: nick-fields/assert-action@v4
+        with:
+          expected: 'one'
+          actual: ${{ fromJson(needs.test.outputs.result).result.one }}
+
+      - uses: nick-fields/assert-action@v4
+        with:
+          expected: 'two'
+          actual: ${{ fromJson(needs.test.outputs.result).result.two }}
+
+  teardown:
+    runs-on: ubuntu-latest
+    needs: [assert]
+    if: ${{ always() }}
+    steps:
+      - name: Tear down
+        run: echo "Do Tear down"
