@@ -306,6 +306,7 @@ For additional context, refer to some of these links.
 ## Copyright
 
 Copyright © 2017-2024 [Cloud Posse, LLC](https://cpco.io/copyright)
+
 Copyright (c) 2026 StepSecurity
 
 
