@@ -1,7 +1,5 @@
 [![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
 
-# This is a fork to correct a misbehavior in cloudposse's standard release
-The original action from cloudposse has a misbehavior where it's utilizing artifacts.  This artifact behavior is downloading *all* workflow artifacts rather than solely the artifact that corresponds to the action, which can then cause the workflow to fail.  This fork exists to fix that behavior.
 
 <!-- markdownlint-disable -->
 # github-action-matrix-outputs-read [![Latest Release](https://img.shields.io/github/release/step-security/github-action-matrix-outputs-read.svg)](https://github.com/step-security/github-action-matrix-outputs-read/releases/latest)
