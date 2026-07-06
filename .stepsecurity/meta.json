@@ -1,0 +1,18 @@
+{
+   "schema_version": "1",
+   "onboarding_type": "copied",
+   "archived": false,
+   "maintained_action_name": "step-security/github-action-matrix-outputs-read",
+   "upstream_full_repo_name": "gocodealone/github-action-matrix-outputs-read",
+   "action_type": "composite",
+   "last_release": {
+     "tag_name": "v1.0.6",
+     "created_at": "2026-06-25T09:40:42Z",
+     "published_at": "2026-06-26T19:48:04Z"
+   },
+   "sync": {
+     "ignore_presets": [
+       "defaults_v1"
+     ]
+   }
+ }
